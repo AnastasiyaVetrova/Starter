@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-requisites-table
+      author: Anastasiya Vetrova
+      changes:
+        - createTable:
+            tableName: requisites
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: current_account
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: corr_account
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: bic
+                  type: varchar(9)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: inn
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: kbk
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: kpp
+                  type: varchar(9)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: UUID
+                  constraints:
+                    foreignKeyName: fk_user_requisites
+                    references: users(id)
+                    nullable: false

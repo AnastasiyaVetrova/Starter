@@ -1,0 +1,17 @@
+my-setting-kafka:
+  my-async:
+    thread-pool:
+     core-pool-size: 3
+     max-pool-size: 10
+     queue-capacity: 50
+     thread-name-prefix: "CustomAsync-"
+  my-customer:
+    default-prop:
+      bootstrap: ${KAFKA_BOOTSTRAP_SERVERS}
+      concurrency: 1
+    dynamic-prop:
+      bootstrap: ${KAFKA_BOOTSTRAP_SERVERS}
+      concurrency: 1
+      dlt-topic: default-puppet
+      interval: 1000
+      max-attempts: 1

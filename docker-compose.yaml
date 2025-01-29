@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  credit-service:
+    container_name: $CI_PROJECT_NAME
+    image: $AND_DOCKER_REGISTRY_NAME/$PROGECT-$APP:$CI_COMMIT_SHA
+    ports:
+      - 9002:8080
+    restart: always
+    volumes:
+      - /logs/credit:/logs
+    networks:
+      - a-tink-test
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "512M"
+
+networks:
+  a-tink-test:
+    external: true
+    driver: bridge

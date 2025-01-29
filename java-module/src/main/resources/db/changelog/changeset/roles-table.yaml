@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-role-table
+      author: Anastasiya Vetrova
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: user_id
+                  type: UUID
+                  constraints:
+#                    foreignKeyName: fk_user_role
+#                    references: users(id)
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            columnNames: user_id, role
+            tableName: roles
+            constraintName: pk_user_role
+        - addForeignKeyConstraint:
+            baseTableName: roles
+            baseColumnNames: user_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_user_role
